@@ -2,25 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Mock Trial</title>
 </head>
 
-<div class="fixed top-0 right-0 p-4 flex space-x-4">
-  <select id="text-color" onchange="changeTextColor()">
-    <option value="default">Default</option>
-    <option value="green">Green</option>
-    <option value="red">Red</option>
-    <option value="golden">Golden</option>
-    <option value="rainbow">Rainbow</option>
-  </select>
-  <select id="theme" onchange="changeTheme()">
-    <option value="default">Default</option>
-    <option value="light">Light</option>
-    <option value="dark">Dark</option>
-    <option value="rainbow">Rainbow</option>
-  </select>
+<style>
+    @media only screen and (max-width: 768px) {
+    html, body {
+        width: 100%;
+        overflow-x: hidden; /* Prevents horizontal scrolling */
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    .text-5xl { font-size: 24px; }
+    .text-4xl { font-size: 20px; }
+    .text-lg { font-size: 14px; }
+
+    .py-12 { padding-top: 6px; padding-bottom: 6px; }
+    .py-6 { padding-top: 3px; padding-bottom: 3px; }
+    .px-4, .p-4 { padding-left: 2px; padding-right: 2px; }
+    .p-6 { padding: 3px; }
+
+    /* Make all elements fit within screen */
+    .w-full, .md:w-1/2, .xl:w-1/3 {
+        width: 100%;
+    }
+
+    .container {
+        max-width: 100vw; /* Ensures the whole container fits */
+        overflow-x: hidden;
+    }
+
+    .ml-4 { margin-left: 2px; }
+    .mt-8 { margin-top: 4px; }
+
+    /* Ensure images and videos resize properly */
+    img, video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Make sure flex/grid layouts stack instead of squeezing */
+    .flex, .grid {
+        flex-direction: column;
+        display: block;
+    }
+}
+</style>
+
+<div class="fixed bottom-0 right-0 p-4 flex space-x-4 z-50"> 
+    <b>Text:</b>
+    <select id="text-color" onchange="changeTextColor()">
+        <option value="default">White Text</option>
+        <option value="green">Green Text</option>
+        <option value="red">Red Text</option>
+        <option value="golden">Golden Text</option>
+        <option value="rainbow">Rainbow Text</option>
+    </select>
+
+    <b>Theme:</b>
+    <select id="theme" onchange="changeTheme()">
+        <option value="default">Light Theme</option>
+        <option value="dark">Dark Theme</option>
+    </select>
 </div>
 
 <style>
@@ -196,71 +244,64 @@ if (textColor == "green") {
     }
 </script>
 
-<body class="bg-gray-100">
-    <!-- Header -->
-    <header class="bg-white py-6 shadow-md">
-      <body class="bg-gray-100">
-        <!-- Header -->
-        <header class="bg-white py-6 shadow-md">
-            <div class="container mx-auto flex justify-between items-center px-4">
-                <h1 class="text-4xl font-bold uppercase">John Dewey</h1>
-                
-                <nav>
+<div class="container mx-auto flex justify-between items-center px-4 py-8">
+    <h1 class="text-4xl font-bold uppercase">John Dewey</h1>
+
+    <!-- Normal Navigation (Hidden on Mobile) -->
+    <nav class="hidden md:flex">
         <ul class="flex space-x-6 text-gray-700">
-            <li class="relative">
-                <a href="index.html" class="hover:text-gray-900">Home</a>
-            </li>
-            <li class="relative">
-                <a href="about.html" class="hover:text-gray-900">About</a>
-                <ul class="absolute hidden bg-white shadow-md py-2 px-4 w-48 text-gray-700">
-                    <li class="py-2 hover:bg-gray-100"><a href="#About/Subpage1">Subpage 1</a></li>
-                    <li class="py-2 hover:bg-gray-100"><a href="#About/Subpage2">Subpage 2</a></li>
-                    <li class="py-2 hover:bg-gray-100"><a href="#About/Subpage3">Subpage 3</a></li>
-                </ul>
-            </li>
-            <li class="relative">
-                <a href="features.html" class="hover:text-gray-900">Features</a>
-                <ul class="absolute hidden bg-white shadow-md py-2 px-4 w-48 text-gray-700">
-                    <li class="py-2 hover:bg-gray-100"><a href="#Features/Subpage1">Subpage 1</a></li>
-                    <li class="py-2 hover:bg-gray-100"><a href="#Features/Subpage2">Subpage 2</a></li>
-                    <li class="py-2 hover:bg-gray-100"><a href="#Features/Subpage3">Subpage 3</a></li>
-                </ul>
-            </li>
-            <li class="relative">
-                <a href="news.html" class="hover:text-gray-900">News</a>
-                <ul class="absolute hidden bg-white shadow-md py-2 px-4 w-48 text-gray-700">
-                    <li class="py-2 hover:bg-gray-100"><a href="#News/Subpage1">Subpage 1</a></li>
-                    <li class="py-2 hover:bg-gray-100"><a href="#News/Subpage2">Subpage 2</a></li>
-                    <li class="py-2 hover:bg-gray-100"><a href="#News/Subpage3">Subpage 3</a></li>
-                </ul>
-            </li>
-            <li class="relative">
-                <a href="staff.html" class="hover:text-gray-900">Staff</a>
-                <ul class="absolute hidden bg-white shadow-md py-2 px-4 w-48 text-gray-700">
-                    <li class="py-2 hover:bg-gray-100"><a href="#Staff/Subpage1">Subpage 1</a></li>
-                    <li class="py-2 hover:bg-gray-100"><a href="#Staff/Subpage2">Subpage 2</a></li>
-                    <li class="py-2 hover:bg-gray-100"><a href="#Staff/Subpage3">Subpage 3</a></li>
-                </ul>
-            </li>
+            <li><a href="index.html" class="hover:text-gray-900">Home</a></li>
+            <li><a href="about.html" class="hover:text-gray-900">About</a></li>
+            <li><a href="features.html" class="hover:text-gray-900">Features</a></li>
+            <li><a href="news.html" class="hover:text-gray-900">News</a></li>
+            <li><a href="staff.html" class="hover:text-gray-900">Staff</a></li>
         </ul>
     </nav>
-    
-    <style>
-        nav ul li:hover ul {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-    
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
-    </header>
+
+    <!-- Burger Menu Icon (Only Visible on Mobile) -->
+    <button id="menu-btn" class="md:hidden absolute top-4 right-4 text-gray-700 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+</div>
+
+<!-- Sidebar Menu (Hidden by Default) -->
+<div id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 md:hidden">
+    <button id="close-btn" class="absolute top-4 right-4 text-gray-700">
+        ✖
+    </button>
+    <ul class="mt-12 space-y-6 text-gray-700 text-lg px-6">
+        <li><a href="index.html" class="block hover:text-gray-900">Home</a></li>
+        <li><a href="about.html" class="block hover:text-gray-900">About</a></li>
+        <li><a href="features.html" class="block hover:text-gray-900">Features</a></li>
+        <li><a href="news.html" class="block hover:text-gray-900">News</a></li>
+        <li><a href="staff.html" class="block hover:text-gray-900">Staff</a></li>
+    </ul>
+</div>
+
+<!-- JavaScript to Handle Menu Toggle -->
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('close-btn');
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+    });
+</script>
+
+<!-- CSS to Hide Normal Menu and Show Burger on Mobile -->
+<style>
+    @media only screen and (max-width: 768px) {
+        nav { display: none; } /* Hide normal menu */
+    }
+</style>
+
 
     <!-- Main Content -->
     <!-- Hero Section -->
@@ -450,7 +491,7 @@ if (textColor == "green") {
 </style>
 
     <!-- Footer -->
-<footer class="bg-gray-800 text-white text-center py-4 fixed bottom-0 left-0 w-full"> 
+<footer class="bg-gray-800 text-white text-center py-4"> 
     <p>&copy; 2025 John Dewey Mock Trial Team. All rights reserved.</p>
 </footer>
 </body>
