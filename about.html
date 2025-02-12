@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mock Trial</title>
+</head>
+
+<div class="fixed top-0 right-0 p-4 flex space-x-4">
+  <select id="text-color" onchange="changeTextColor()">
+    <option value="default">Default</option>
+    <option value="green">Green</option>
+    <option value="red">Red</option>
+    <option value="golden">Golden</option>
+    <option value="rainbow">Rainbow</option>
+  </select>
+  <select id="theme" onchange="changeTheme()">
+    <option value="default">Default</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <option value="rainbow">Rainbow</option>
+  </select>
+</div>
+
+<style>
+    .green-text {
+        color: #34C759;
+    }
+    .green-text .text-gray-700 {
+        color: #34C759;
+    }
+    .green-text .text-gray-800 {
+        color: #34C759;
+    }
+    .green-text .text-gray-900 {
+        color: #34C759;
+    }
+
+    .red-text {
+        color: #FF3737;
+    }
+    .red-text .text-gray-700 {
+        color: #FF3737;
+    }
+    .red-text .text-gray-800 {
+        color: #FF3737;
+    }
+    .red-text .text-gray-900 {
+        color: #FF3737;
+    }
+
+    .golden-text {
+        color: #FFD700;
+    }
+    .golden-text .text-gray-700 {
+        color: #FFD700;
+    }
+    .golden-text .text-gray-800 {
+        color: #FFD700;
+    }
+    .golden-text .text-gray-900 {
+        color: #FFD700;
+    }
+    .rainbow-text {
+        animation: rainbow 2s infinite;
+    }
+
+    @keyframes rainbow {
+        0% {
+            color: #FF3737;
+        }
+        20% {
+            color: #FFD700;
+        }
+        40% {
+            color: #34C759;
+        }
+        60% {
+            color: #4B0082;
+        }
+        80% {
+            color: #8F0A1A;
+        }
+        100% {
+            color: #FF3737;
+        }
+    }
+</style>
+
+<script>
+    function changeTextColor() {
+var textColor = document.getElementById("text-color").value;
+if (textColor == "green") {
+    document.body.classList.remove("red-text", "golden-text", "rainbow-text");
+    document.body.classList.add("green-text");
+} else if (textColor == "red") {
+    document.body.classList.remove("green-text", "golden-text", "rainbow-text");
+    document.body.classList.add("red-text");
+} else if (textColor == "golden") {
+    document.body.classList.remove("green-text", "red-text", "rainbow-text");
+    document.body.classList.add("golden-text");
+} else if (textColor == "rainbow") {
+    document.body.classList.remove("green-text", "red-text", "golden-text");
+    document.body.classList.add("rainbow-text");
+} else {
+    document.body.classList.remove("green-text", "red-text", "golden-text", "rainbow-text");
+}
+    }
+    
+</script>
+
+<style>
+    .light-mode {
+        background-color: #fff;
+        color: #000;
+    }
+    .light-mode .bg-white {
+        background-color: #fff;
+    }
+    .light-mode .text-white {
+        color: #000;
+    }
+    .light-mode .text-gray-700 {
+        color: #000;
+    }
+    .light-mode .text-gray-800 {
+        color: #000;
+    }
+    .light-mode .text-gray-900 {
+        color: #000;
+    }
+    .light-mode .bg-gray-100 {
+        background-color: #fff;
+    }
+    .light-mode .bg-gray-200 {
+        background-color: #fff;
+    }
+    .light-mode .bg-gray-800 {
+        background-color: #fff;
+    }
+    .light-mode .shadow-md {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .dark-mode {
+        background-color: #000;
+        color: #fff;
+    }
+    .dark-mode .bg-white {
+        background-color: #000;
+    }
+    .dark-mode .text-gray-700 {
+        color: #fff;
+    }
+    .dark-mode .text-gray-800 {
+        color: #fff;
+    }
+    .dark-mode .text-gray-900 {
+        color: #fff;
+    }
+    .dark-mode .bg-gray-100 {
+        background-color: #000;
+    }
+    .dark-mode .bg-gray-200 {
+        background-color: #333;
+    }
+    .dark-mode .bg-gray-800 {
+        background-color: #000;
+    }
+    .dark-mode .shadow-md {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    .dark-mode #theme {
+        color: #000;
+    }
+    .dark-mode #theme option {
+        color: #000;
+        background-color: #ffffff;
+    }
+    
+</style>
+
+<script>
+    function changeTheme() {
+        var theme = document.getElementById("theme").value;
+        if (theme == "light") {
+            document.body.classList.remove("dark-mode");
+            document.body.classList.add("light-mode");
+        } else if (theme == "dark") {
+            document.body.classList.remove("light-mode");
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("light-mode", "dark-mode");
+        }
+    }
+</script>
+
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white py-6 shadow-md">
+      <body class="bg-gray-100">
+        <!-- Header -->
+        <header class="bg-white py-6 shadow-md">
+            <div class="container mx-auto flex justify-between items-center px-4">
+                <h1 class="text-4xl font-bold uppercase">John Dewey</h1>
+                
+                <nav>
+        <ul class="flex space-x-6 text-gray-700">
+            <li class="relative">
+                <a href="index.html" class="hover:text-gray-900">Home</a>
+            </li>
+            <li class="relative">
+                <a href="about.html" class="hover:text-gray-900">About</a>
+                <ul class="absolute hidden bg-white shadow-md py-2 px-4 w-48 text-gray-700">
+                    <li class="py-2 hover:bg-gray-100"><a href="#About/Subpage1">Subpage 1</a></li>
+                    <li class="py-2 hover:bg-gray-100"><a href="#About/Subpage2">Subpage 2</a></li>
+                    <li class="py-2 hover:bg-gray-100"><a href="#About/Subpage3">Subpage 3</a></li>
+                </ul>
+            </li>
+            <li class="relative">
+                <a href="features.html" class="hover:text-gray-900">Features</a>
+                <ul class="absolute hidden bg-white shadow-md py-2 px-4 w-48 text-gray-700">
+                    <li class="py-2 hover:bg-gray-100"><a href="#Features/Subpage1">Subpage 1</a></li>
+                    <li class="py-2 hover:bg-gray-100"><a href="#Features/Subpage2">Subpage 2</a></li>
+                    <li class="py-2 hover:bg-gray-100"><a href="#Features/Subpage3">Subpage 3</a></li>
+                </ul>
+            </li>
+            <li class="relative">
+                <a href="news.html" class="hover:text-gray-900">News</a>
+                <ul class="absolute hidden bg-white shadow-md py-2 px-4 w-48 text-gray-700">
+                    <li class="py-2 hover:bg-gray-100"><a href="#News/Subpage1">Subpage 1</a></li>
+                    <li class="py-2 hover:bg-gray-100"><a href="#News/Subpage2">Subpage 2</a></li>
+                    <li class="py-2 hover:bg-gray-100"><a href="#News/Subpage3">Subpage 3</a></li>
+                </ul>
+            </li>
+            <li class="relative">
+                <a href="staff.html" class="hover:text-gray-900">Staff</a>
+                <ul class="absolute hidden bg-white shadow-md py-2 px-4 w-48 text-gray-700">
+                    <li class="py-2 hover:bg-gray-100"><a href="#Staff/Subpage1">Subpage 1</a></li>
+                    <li class="py-2 hover:bg-gray-100"><a href="#Staff/Subpage2">Subpage 2</a></li>
+                    <li class="py-2 hover:bg-gray-100"><a href="#Staff/Subpage3">Subpage 3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+    <style>
+        nav ul li:hover ul {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    </header>
+
+    <!-- Main Content -->
+
+        <!-- Hero Section -->
+
+    <!-- Footer -->
+<footer class="bg-gray-800 text-white text-center py-4 fixed bottom-0 left-0 w-full"> 
+    <p>&copy; 2025 John Dewey Mock Trial Team. All rights reserved.</p>
+</footer>
+</body>
+</html>
