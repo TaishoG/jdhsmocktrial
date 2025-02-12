@@ -267,10 +267,8 @@ if (textColor == "green") {
 </div>
 
 <!-- Sidebar Menu (Hidden by Default) -->
-<div id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 md:hidden">
-    <button id="close-btn" class="absolute top-4 right-4 text-gray-700">
-        ✖
-    </button>
+<div id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 md:hidden z-50">
+    <button id="close-btn" class="absolute top-4 right-4 text-gray-700 focus:outline-none text-3xl">X</button>
     <ul class="mt-12 space-y-6 text-gray-700 text-lg px-6">
         <li><a href="index.html" class="block hover:text-gray-900">Home</a></li>
         <li><a href="about.html" class="block hover:text-gray-900">About</a></li>
@@ -305,7 +303,7 @@ if (textColor == "green") {
 
     <!-- Main Content -->
     <!-- Hero Section -->
-<section class="bg-gray-100 py-24" style="background-image: url('NYCBanner.jpg'); background-size: cover; background-position: center; filter: brightness(1); image-rendering: crisp-edges; image-rendering: -moz-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: optimize-contrast;">
+<section class="bg-gray-100 py-24" style="background-image: url('NYCBanner.jpg'); background-size: 150%; background-position: center; filter: brightness(1); image-rendering: crisp-edges; image-rendering: -moz-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: optimize-contrast;">
     <div class="container mx-auto px-4">
         <h2 class="text-5xl font-bold uppercase text-center mb-4 text-white glow-bright-white" style="text-shadow: 0 0 10px #fff;">Mock Trial</h2>
         <p class="text-lg text-white text-center mb-8 glow-bright-white" style="text-shadow: 0 0 10px #fff;">"Where Future Attorneys Are Made."</p>
