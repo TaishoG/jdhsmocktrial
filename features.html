@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mock Trial</title>
+</head>
+
+<style>
+    @media only screen and (max-width: 768px) {
+    html, body {
+        width: 100%;
+        overflow-x: hidden; /* Prevents horizontal scrolling */
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    .text-5xl { font-size: 24px; }
+    .text-4xl { font-size: 20px; }
+    .text-lg { font-size: 14px; }
+
+    .py-12 { padding-top: 6px; padding-bottom: 6px; }
+    .py-6 { padding-top: 3px; padding-bottom: 3px; }
+    .px-4, .p-4 { padding-left: 2px; padding-right: 2px; }
+    .p-6 { padding: 3px; }
+
+    /* Make all elements fit within screen */
+    .w-full, .md:w-1/2, .xl:w-1/3 {
+        width: 100%;
+    }
+
+    .container {
+        max-width: 100vw; /* Ensures the whole container fits */
+        overflow-x: hidden;
+    }
+
+    .ml-4 { margin-left: 2px; }
+    .mt-8 { margin-top: 4px; }
+
+    /* Ensure images and videos resize properly */
+    img, video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Make sure flex/grid layouts stack instead of squeezing */
+    .flex, .grid {
+        flex-direction: column;
+        display: block;
+    }
+}
+</style>
+
+<div class="fixed bottom-0 right-0 p-4 flex space-x-4 z-50"> 
+    <b>Text:</b>
+    <select id="text-color" onchange="changeTextColor()">
+        <option value="default">White Text</option>
+        <option value="green">Green Text</option>
+        <option value="red">Red Text</option>
+        <option value="golden">Golden Text</option>
+        <option value="rainbow">Rainbow Text</option>
+    </select>
+
+    <b>Theme:</b>
+    <select id="theme" onchange="changeTheme()">
+        <option value="default">Light Theme</option>
+        <option value="dark">Dark Theme</option>
+    </select>
+</div>
+
+<style>
+    .green-text {
+        color: #34C759;
+    }
+    .green-text .text-gray-700 {
+        color: #34C759;
+    }
+    .green-text .text-gray-800 {
+        color: #34C759;
+    }
+    .green-text .text-gray-900 {
+        color: #34C759;
+    }
+
+    .red-text {
+        color: #FF3737;
+    }
+    .red-text .text-gray-700 {
+        color: #FF3737;
+    }
+    .red-text .text-gray-800 {
+        color: #FF3737;
+    }
+    .red-text .text-gray-900 {
+        color: #FF3737;
+    }
+
+    .golden-text {
+        color: #FFD700;
+    }
+    .golden-text .text-gray-700 {
+        color: #FFD700;
+    }
+    .golden-text .text-gray-800 {
+        color: #FFD700;
+    }
+    .golden-text .text-gray-900 {
+        color: #FFD700;
+    }
+    .rainbow-text {
+        animation: rainbow 2s infinite;
+    }
+
+    @keyframes rainbow {
+        0% {
+            color: #FF3737;
+        }
+        20% {
+            color: #FFD700;
+        }
+        40% {
+            color: #34C759;
+        }
+        60% {
+            color: #4B0082;
+        }
+        80% {
+            color: #8F0A1A;
+        }
+        100% {
+            color: #FF3737;
+        }
+    }
+</style>
+
+<script>
+    function changeTextColor() {
+var textColor = document.getElementById("text-color").value;
+if (textColor == "green") {
+    document.body.classList.remove("red-text", "golden-text", "rainbow-text");
+    document.body.classList.add("green-text");
+} else if (textColor == "red") {
+    document.body.classList.remove("green-text", "golden-text", "rainbow-text");
+    document.body.classList.add("red-text");
+} else if (textColor == "golden") {
+    document.body.classList.remove("green-text", "red-text", "rainbow-text");
+    document.body.classList.add("golden-text");
+} else if (textColor == "rainbow") {
+    document.body.classList.remove("green-text", "red-text", "golden-text");
+    document.body.classList.add("rainbow-text");
+} else {
+    document.body.classList.remove("green-text", "red-text", "golden-text", "rainbow-text");
+}
+    }
+    
+</script>
+
+<style>
+    .light-mode {
+        background-color: #fff;
+        color: #000;
+    }
+    .light-mode .bg-white {
+        background-color: #fff;
+    }
+    .light-mode .text-white {
+        color: #000;
+    }
+    .light-mode .text-gray-700 {
+        color: #000;
+    }
+    .light-mode .text-gray-800 {
+        color: #000;
+    }
+    .light-mode .text-gray-900 {
+        color: #000;
+    }
+    .light-mode .bg-gray-100 {
+        background-color: #fff;
+    }
+    .light-mode .bg-gray-200 {
+        background-color: #fff;
+    }
+    .light-mode .bg-gray-800 {
+        background-color: #fff;
+    }
+    .light-mode .shadow-md {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .dark-mode {
+        background-color: #000;
+        color: #fff;
+    }
+    .dark-mode .bg-white {
+        background-color: #000;
+    }
+    .dark-mode .text-gray-700 {
+        color: #fff;
+    }
+    .dark-mode .text-gray-800 {
+        color: #fff;
+    }
+    .dark-mode .text-gray-900 {
+        color: #fff;
+    }
+    .dark-mode .bg-gray-100 {
+        background-color: #000;
+    }
+    .dark-mode .bg-gray-200 {
+        background-color: #333;
+    }
+    .dark-mode .bg-gray-800 {
+        background-color: #000;
+    }
+    .dark-mode .shadow-md {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    .dark-mode #theme {
+        color: #000;
+    }
+    .dark-mode #theme option {
+        color: #000;
+        background-color: #ffffff;
+    }
+    
+</style>
+
+<script>
+    function changeTheme() {
+        var theme = document.getElementById("theme").value;
+        if (theme == "light") {
+            document.body.classList.remove("dark-mode");
+            document.body.classList.add("light-mode");
+        } else if (theme == "dark") {
+            document.body.classList.remove("light-mode");
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("light-mode", "dark-mode");
+        }
+    }
+</script>
+
+<div class="container mx-auto flex justify-between items-center px-4 py-8">
+    <h1 class="text-4xl font-bold uppercase">John Dewey</h1>
+
+    <!-- Normal Navigation (Hidden on Mobile) -->
+    <nav class="hidden md:flex">
+        <ul class="flex space-x-6 text-gray-700">
+            <li><a href="index.html" class="hover:text-gray-900">Home</a></li>
+            <li><a href="about.html" class="hover:text-gray-900">About</a></li>
+            <li><a href="features.html" class="hover:text-gray-900">Features</a></li>
+            <li><a href="news.html" class="hover:text-gray-900">News</a></li>
+            <li><a href="staff.html" class="hover:text-gray-900">Staff</a></li>
+            <li><a href="gallery.html" class="hover:text-gray-900">Gallery</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- Burger Menu Icon (Only Visible on Mobile) -->
+    <button id="menu-btn" class="md:hidden absolute top-4 right-4 text-gray-700 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+</div>
+
+<!-- Sidebar Menu (Hidden by Default) -->
+<div id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg transform -translate-x-full transition-transform duration-300 md:hidden">
+    <button id="close-btn" class="absolute top-4 right-4 text-gray-700">
+        ✖
+    </button>
+    <ul class="mt-12 space-y-6 text-gray-700 text-lg px-6">
+        <li><a href="index.html" class="block hover:text-gray-900">Home</a></li>
+        <li><a href="about.html" class="block hover:text-gray-900">About</a></li>
+        <li><a href="features.html" class="block hover:text-gray-900">Features</a></li>
+        <li><a href="news.html" class="block hover:text-gray-900">News</a></li>
+        <li><a href="staff.html" class="block hover:text-gray-900">Staff</a></li>
+        <li><a href="gallery.html" class="hover:text-gray-900">Gallery</a></li>
+
+    </ul>
+</div>
+
+<!-- JavaScript to Handle Menu Toggle -->
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('close-btn');
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.remove('-translate-x-full');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+    });
+</script>
+
+<!-- CSS to Hide Normal Menu and Show Burger on Mobile -->
+<style>
+    @media only screen and (max-width: 768px) {
+        nav { display: none; } /* Hide normal menu */
+    }
+</style>
+
+<a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-20 right-4 w-12 h-12 md:w-24 md:h-24" alt="School Logo" style="filter: brightness(1);"></a>
+
+<div id="popup-container" class="fixed bottom-0 left-0 p-4 flex space-x-4 z-50 bg-gray-800 text-white rounded shadow-md animate-fade-in">
+    <p class="text-sm">Welcome to the official John Dewey Mock Trial Team Website! Would you like to enable Mock Mode?</p>
+    <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="enableMockMode(); document.getElementById('popup-container').classList.add('hidden')">Yes</button>
+    <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="document.getElementById('popup-container').classList.add('hidden')">No</button>
+</div>
+
+<script>
+    function enableMockMode() {
+        document.body.classList.add("rainbow-text");
+        document.body.classList.add("dark-mode");
+    }
+</script>
+
+<script>
+    window.onload = function() {
+        document.getElementById('popup-container').classList.remove('hidden');
+    }
+</script>
+
+
+    <!-- Footer -->
+<footer class="bg-gray-800 text-white text-center py-4"> 
+    <p>&copy; 2025 John Dewey Mock Trial Team. All rights reserved.</p>
+</footer>
+</body>
+</html>
