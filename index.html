@@ -456,11 +456,11 @@ if (textColor == "green") {
     </div>
 </section>
 
-<section class="bg-gray-100 py-12 animate-pulse">
+<section class="bg-gray-100 py-12" style="animation: none;">
     <div class="container mx-auto px-4">
         <h2 class="text-5xl font-bold uppercase text-center mb-4">Join Us</h2>
         <div class="flex justify-center">
-            <div class="bg-white rounded shadow-md p-4 mx-auto w-full md:w-1/2 xl:w-1/3 text-center animate-fade-in">
+            <div class="bg-white rounded shadow-md p-4 mx-auto w-full md:w-1/2 xl:w-1/3 text-center animate-fade-in" style="animation: pulse 2s infinite;">
                 <h3 class="text-lg font-bold mb-2 text-golden">Become a Part of Our Competitive Team</h3>
                 <p class="text-gray-700">Are you ready to argue, defend, and win? The JDHS Mock Trial Team is always looking for passionate students who want to sharpen their legal skills. Contact us to learn more!</p>
                 <div class="flex justify-center mt-8">
@@ -468,7 +468,7 @@ if (textColor == "green") {
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4 glow-bright-golden" onclick="document.getElementById('availability').classList.toggle('hidden')">See availability first!</button>
                 </div>
             </div>
-            <div class="bg-white rounded shadow-md p-4 mx-auto w-full md:w-1/2 xl:w-1/3 text-center ml-4 animate-fade-in">
+            <div class="bg-white rounded shadow-md p-4 mx-auto w-full md:w-1/2 xl:w-1/3 text-center ml-4 animate-fade-in" style="animation: pulse 2s infinite;">
                 <h3 class="text-lg font-bold mb-2 text-golden">Join Our Development Team</h3>
                 <p class="text-gray-700">Would you like to prepare to become a part of the Competitive Team? This is the perfect spot to learn and succeed, Hands on! Contact us to learn more!</p>
                 <div class="flex justify-center mt-8">
@@ -479,6 +479,41 @@ if (textColor == "green") {
         </div>
     </div>
 </section>
+
+<style>
+    .animate-fade-in {
+        animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
+
+<style>
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
 
 <style>
     .text-golden {
@@ -509,11 +544,11 @@ if (textColor == "green") {
     @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: scale(0.5);
+            transform: scale(0.5) translateX(-50%) translateY(-50%);
         }
         to {
             opacity: 1;
-            transform: scale(1);
+            transform: scale(1) translateX(-50%) translateY(-50%);
         }
     }
 </style>
@@ -536,6 +571,85 @@ if (textColor == "green") {
         document.getElementById('popup-container').classList.remove('hidden');
     }
 </script>
+
+<section class="bg-gray-100 py-12" style="background-image: url('law.png'); background-size: cover; background-position: center; filter: brightness(1); image-rendering: crisp-edges; image-rendering: -moz-crisp-edges; image-rendering: -webkit-optimize-contrast; image-rendering: optimize-contrast;">
+    <div class="container mx-auto px-4">
+        <h2 class="text-5xl font-bold uppercase text-center mb-4 text-white glow-bright-white" style="text-shadow: 0 0 10px #fff;">Team Of 2025</h2>
+        <div class="flex justify-center">
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <div class="bg-white rounded shadow-md p-4">
+                    <h3 class="text-lg font-bold mb-2">Coaches</h3>
+                    <ul>
+                        <li class="text-gray-700">Aleksandr Filipov</li>
+                        <li class="text-gray-700">Sam Callis</li>
+                        <li class="text-gray-700">Danny Farran</li>
+                        <li class="text-gray-700">Mr. Schwartzberg</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <div class="bg-white rounded shadow-md p-4">
+                    <h3 class="text-lg font-bold mb-2">Team Captain</h3>
+                    <ul>
+                        <li class="text-gray-700">Currently being voted on!</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <div class="bg-white rounded shadow-md p-4">
+                    <h3 class="text-lg font-bold mb-2">Members</h3>
+                    <ul>
+                        <li class="text-gray-700">Luiza Hamrakulova /Lawyer</li>
+                        <li class="text-gray-700">Lizi Makashvili /Lawyer</li>
+                        <li class="text-gray-700">Mindy Zou /Expert Witness</li>
+                        <li class="text-gray-700">Amir Faridun Ahmetjanov /Lawyer</li>
+                        <li class="text-gray-700">Helena Calixte /Witness</li>
+                        <li class="text-gray-700">Lila Chen /Witness</li>
+                        <li class="text-gray-700">Melvin Macoto /Witness</li>
+                        <li class="text-gray-700">Sameer Saleemi /Lawyer</li>
+                        <li class="text-gray-700">Zhao Ying Zhen /Witness</li>
+                        <li class="text-gray-700">Eric Huang /Expert Witness</li>
+                        <li class="text-gray-700">Leon Gladyshev /Lawyer</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <div class="bg-white rounded shadow-md p-4">
+                    <h3 class="text-lg font-bold mb-2">Lead Designers</h3>
+                    <ul>
+                        <li class="text-gray-700">Lila Chen</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 xl:w-1/3 p-6">
+                <div class="bg-white rounded shadow-md p-4">
+                    <h3 class="text-lg font-bold mb-2">Creator Of This Site C:</h3>
+                    <ul>
+                        <li class="text-gray-700">Leon Gladyshev</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-gray-800 text-white text-center py-4"> 
+<footer class="bg-gray-800 text-white text-center py-4"> 
+    <div class="flex justify-center mt-4">
+        <a href="index.html" class="text-white hover:text-gray-400 mx-2">Home</a>
+        <a href="about.html" class="text-white hover:text-gray-400 mx-2">About</a>
+        <a href="features.html" class="text-white hover:text-gray-400 mx-2">Features</a>
+        <a href="news.html" class="text-white hover:text-gray-400 mx-2">News</a>
+        <a href="staff.html" class="text-white hover:text-gray-400 mx-2">Staff</a>
+        <a href="gallery.html" class="text-white hover:text-gray-400 mx-2">Gallery</a>
+        <a href="contact.html" class="text-white hover:text-gray-400 mx-2">Contact</a>
+    </div>
+    <div class="flex justify-center mt-4">
+        <a href="https://www.instagram.com/jdhs.mocktrial/" target="_blank"><img src="instagram.png" class="w-6 h-6" style="background-color: transparent;"></a>
+        <a href="https://www.facebook.com/jdhsdragonscales/" target="_blank"><img src="facebook.png" class="w-6 h-6" style="background-color: transparent;"></a>
+        <a href="https://www.tiktok.com/jdhsdragonscales/" target="_blank"><img src="tiktok.png" class="w-6 h-6" style="background-color: transparent;"></a>
+    </div>
+</footer>
 
     <!-- Footer -->
 <footer class="bg-gray-800 text-white text-center py-4"> 
