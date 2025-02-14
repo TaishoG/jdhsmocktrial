@@ -54,7 +54,7 @@
 }
 </style>
 
-<div class="fixed bottom-0 right-0 p-4 flex space-x-4 z-50"> 
+<div class="fixed bottom-8 right-0 p-4 flex space-x-4 z-50"> 
     <b>Text:</b>
     <select id="text-color" onchange="changeTextColor()">
         <option value="default">White Text</option>
@@ -257,6 +257,32 @@ if (textColor == "green") {
             <li><a href="gallery.html" class="hover:text-gray-900">Gallery</a></li>
         </ul>
     </nav>
+
+<div class="fixed bottom-7 left-0 p-4 flex space-x-4 z-50" id="scroll-to-top" style="display: none;">
+    <p class="text-gray-700 text-sm hidden md:block">Press 'E' to scroll back up</p>
+    <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+</div>
+
+<script>
+    window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        if (scrollPosition > 200) {
+            document.getElementById('scroll-to-top').style.display = 'block';
+        } else {
+            document.getElementById('scroll-to-top').style.display = 'none';
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'e' || event.key === 'E') {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    });
+</script>
 
     <!-- Burger Menu Icon (Only Visible on Mobile) -->
     <button id="menu-btn" class="md:hidden absolute top-4 right-4 text-gray-700 focus:outline-none">
