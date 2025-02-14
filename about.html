@@ -335,6 +335,112 @@ if (textColor == "green") {
 </div>
 
 <a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-0 left-0 w-12 h-12 md:w-24 md:h-24 z-50" alt="School Logo" style="filter: brightness(1);"></a>
+
+<div class="container mx-auto p-4 animate-fade-in">
+    <h1 class="text-5xl font-bold uppercase text-center animate-bounce">About Us</h1>
+    <p class="text-lg text-center animate-fade-in">The John Dewey Mock Trial Team is a group of dedicated students who share a passion for law and justice. Our team is committed to developing our skills in critical thinking, public speaking, and teamwork, as we prepare for competitions and community events.</p>
+    <h2 class="text-3xl font-bold text-center animate-slide-in">Our Team</h2>
+    <div class="flex flex-wrap justify-center animate-fade-in">
+        <div class="w-full md:w-1/2 xl:w-1/3 p-4 bg-gray-100 rounded shadow-md animate-scale-up">
+            <h3 class="text-2xl font-bold text-center">Coaches</h3>
+            <ul class="list-none">
+                <li class="animate-fade-in">Coach 1</li>
+                <li class="animate-fade-in">Coach 2</li>
+            </ul>
+        </div>
+        <div class="w-full md:w-1/2 xl:w-1/3 p-4 bg-gray-100 rounded shadow-md animate-scale-up">
+            <h3 class="text-2xl font-bold text-center">Team Members</h3>
+            <ul class="list-none">
+                <li class="animate-fade-in">Member 1</li>
+                <li class="animate-fade-in">Member 2</li>
+                <li class="animate-fade-in">Member 3</li>
+            </ul>
+        </div>
+    </div>
+    <h2 class="text-3xl font-bold text-center animate-slide-in">Our Achievements</h2>
+    <ul class="list-none text-center animate-fade-in">
+        <li class="animate-fade-in">Award 1</li>
+        <li class="animate-fade-in">Award 2</li>
+        <li class="animate-fade-in">Award 3</li>
+    </ul>
+</div>
+
+<style>
+    .animate-fade-in {
+        animation: fade-in 2s;
+    }
+
+    .animate-bounce {
+        animation: bounce 2s;
+    }
+
+    .animate-slide-in {
+        animation: slide-in 2s;
+    }
+
+    .animate-scale-up {
+        animation: scale-up 2s;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: scale(0.5);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slide-in {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes scale-up {
+        0% {
+            transform: scale(0.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
+
+
+<footer class="bg-gray-800 text-white text-center py-4"> 
+    <footer class="bg-gray-800 text-white text-center py-4"> 
+        <div class="flex justify-center mt-4">
+            <a href="index.html" class="text-white hover:text-gray-400 mx-2">Home</a>
+            <a href="about.html" class="text-white hover:text-gray-400 mx-2">About</a>
+            <a href="features.html" class="text-white hover:text-gray-400 mx-2">Features</a>
+            <a href="news.html" class="text-white hover:text-gray-400 mx-2">News</a>
+            <a href="staff.html" class="text-white hover:text-gray-400 mx-2">Staff</a>
+            <a href="gallery.html" class="text-white hover:text-gray-400 mx-2">Gallery</a>
+            <a href="contact.html" class="text-white hover:text-gray-400 mx-2">Contact</a>
+        </div>
+        <div class="flex justify-center mt-4">
+            <a href="https://www.instagram.com/jdhs.mocktrial/" target="_blank"><img src="instagram.png" class="w-6 h-6" style="background-color: transparent;"></a>
+            <a href="https://www.facebook.com/jdhsdragonscales/" target="_blank"><img src="facebook.png" class="w-6 h-6" style="background-color: transparent;"></a>
+            <a href="https://www.tiktok.com/jdhsdragonscales/" target="_blank"><img src="tiktok.png" class="w-6 h-6" style="background-color: transparent;"></a>
+        </div>
+    </footer>
+
     <!-- Footer -->
 <footer class="bg-gray-800 text-white text-center py-4"> 
     <p>&copy; 2025 John Dewey Mock Trial Team. All rights reserved.</p>
