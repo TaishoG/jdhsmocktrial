@@ -306,8 +306,6 @@ if (textColor == "green") {
     }
 </style>
 
-<a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-20 right-4 w-12 h-12 md:w-24 md:h-24" alt="School Logo" style="filter: brightness(1);"></a>
-
 <div id="popup-container" class="fixed bottom-0 left-0 p-4 flex space-x-4 z-50 bg-gray-800 text-white rounded shadow-md animate-fade-in">
     <p class="text-sm">Welcome to the official John Dewey Mock Trial Team Website! Would you like to enable Mock Mode?</p>
     <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="enableMockMode(); document.getElementById('popup-container').classList.add('hidden')">Yes</button>
@@ -327,41 +325,103 @@ if (textColor == "green") {
     }
 </script>
 
-<div id="under-construction" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50">
-    <p class="text-3xl font-bold">This page is still under construction.</p>
-    <p class="text-lg">We apologize for the inconvenience.</p>
-    <div class="flex flex-row space-x-4 mt-8">
-        <a href="index.html" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded">Back to Home</a>
-        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="document.getElementById('under-construction').classList.add('hidden')">Preview Website</button>
+<div id="under-construction" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50 md:py-12 py-6">
+    <p class="text-lg md:text-2xl font-bold">This page is still under construction.</p>
+    <p class="text-sm md:text-md">We apologize for the inconvenience.</p>
+    <div class="flex flex-row space-x-2 md:space-x-4 mt-4 md:mt-8">
+        <a href="index.html" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded">Back to Home</a>
+        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded" onclick="document.getElementById('under-construction').classList.add('hidden')">Preview Website</button>
     </div>
 </div>
 
 <a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-0 left-0 w-12 h-12 md:w-24 md:h-24 z-50" alt="School Logo" style="filter: brightness(1);"></a>
 
+<style>
+    .animate-fade-in {
+        animation: fade-in 2s;
+    }
 
-<footer class="bg-gray-800 text-white text-center py-4"> 
-    <footer class="bg-gray-800 text-white text-center py-4"> 
-        <div class="flex justify-center mt-4">
-            <a href="index.html" class="text-white hover:text-gray-400 mx-2">Home</a>
-            <a href="about.html" class="text-white hover:text-gray-400 mx-2">About</a>
-            <a href="features.html" class="text-white hover:text-gray-400 mx-2">Features</a>
-            <a href="news.html" class="text-white hover:text-gray-400 mx-2">News</a>
-            <a href="staff.html" class="text-white hover:text-gray-400 mx-2">Staff</a>
-            <a href="gallery.html" class="text-white hover:text-gray-400 mx-2">Gallery</a>
-            <a href="contact.html" class="text-white hover:text-gray-400 mx-2">Contact</a>
-        </div>
-        <div class="flex justify-center mt-4">
-            <a href="https://www.instagram.com/jdhs.mocktrial/" target="_blank"><img src="instagram.png" class="w-6 h-6" style="background-color: transparent;"></a>
-            <a href="https://www.facebook.com/jdhsdragonscales/" target="_blank"><img src="facebook.png" class="w-6 h-6" style="background-color: transparent;"></a>
-            <a href="https://www.tiktok.com/jdhsdragonscales/" target="_blank"><img src="tiktok.png" class="w-6 h-6" style="background-color: transparent;"></a>
-        </div>
-    </footer>
+    .animate-bounce {
+        animation: bounce 2s;
+    }
 
+    .animate-slide-in {
+        animation: slide-in 2s;
+    }
 
+    .animate-scale-up {
+        animation: scale-up 2s;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: scale(0.5);
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slide-in {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes scale-up {
+        0% {
+            transform: scale(0.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
 
     <!-- Footer -->
-<footer class="bg-gray-800 text-white text-center py-4"> 
-    <p>&copy; 2025 John Dewey Mock Trial Team. All rights reserved.</p>
-</footer>
+    <footer class="bg-gray-800 text-white text-center py-4"> 
+
+        <footer class="bg-gray-800 text-white text-center py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center mb-4">
+    <a href="https://www.instagram.com/jdhs_mock_trial/" target="_blank" class="text-gray-400 hover:text-white mr-4">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+    </a>
+                <a href="https://www.facebook.com/jdhs.mock.trial/" target="_blank" class="text-gray-400 hover:text-white mr-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/jdhs_mock_trial" target="_blank" class="text-gray-400 hover:text-white mr-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                    </svg>
+                </a>
+            </div>
+            <p>Website designed and developed by Leon Gladyshev.</p>
+            <p>Contact us at <a href="mailto:jdhs.mock.trial@gmail.com" class="text-gray-400 hover:text-white">jdhs.mock.trial@gmail.com</a> for more information.</p>
+        </div>
+    </footer>
+    
+        <p>&copy; 2025 JDHS Dragon's Scales Mock Trial Team. All rights reserved.</p>
+    </footer>
 </body>
 </html>
