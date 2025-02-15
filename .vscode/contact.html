@@ -71,6 +71,59 @@
     </select>
 </div>
 
+<script>
+    function loadUserPreferences() {
+        const textColor = localStorage.getItem('textColor');
+        const theme = localStorage.getItem('theme');
+
+        if (textColor) {
+            document.getElementById('text-color').value = textColor;
+            changeTextColor();
+        }
+
+        if (theme) {
+            document.getElementById('theme').value = theme;
+            changeTheme();
+        }
+    }
+
+    loadUserPreferences();
+
+    function changeTextColor() {
+        var textColor = document.getElementById("text-color").value;
+        localStorage.setItem('textColor', textColor);
+        if (textColor == "green") {
+            document.body.classList.remove("red-text", "golden-text", "rainbow-text");
+            document.body.classList.add("green-text");
+        } else if (textColor == "red") {
+            document.body.classList.remove("green-text", "golden-text", "rainbow-text");
+            document.body.classList.add("red-text");
+        } else if (textColor == "golden") {
+            document.body.classList.remove("green-text", "red-text", "rainbow-text");
+            document.body.classList.add("golden-text");
+        } else if (textColor == "rainbow") {
+            document.body.classList.remove("green-text", "red-text", "golden-text");
+            document.body.classList.add("rainbow-text");
+        } else {
+            document.body.classList.remove("green-text", "red-text", "golden-text", "rainbow-text");
+        }
+    }
+
+    function changeTheme() {
+        var theme = document.getElementById("theme").value;
+        localStorage.setItem('theme', theme);
+        if (theme == "light") {
+            document.body.classList.remove("dark-mode");
+            document.body.classList.add("light-mode");
+        } else if (theme == "dark") {
+            document.body.classList.remove("light-mode");
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("light-mode", "dark-mode");
+        }
+    }
+</script>
+
 <style>
     .green-text {
         color: #34C759;
@@ -135,28 +188,6 @@
         }
     }
 </style>
-
-<script>
-    function changeTextColor() {
-var textColor = document.getElementById("text-color").value;
-if (textColor == "green") {
-    document.body.classList.remove("red-text", "golden-text", "rainbow-text");
-    document.body.classList.add("green-text");
-} else if (textColor == "red") {
-    document.body.classList.remove("green-text", "golden-text", "rainbow-text");
-    document.body.classList.add("red-text");
-} else if (textColor == "golden") {
-    document.body.classList.remove("green-text", "red-text", "rainbow-text");
-    document.body.classList.add("golden-text");
-} else if (textColor == "rainbow") {
-    document.body.classList.remove("green-text", "red-text", "golden-text");
-    document.body.classList.add("rainbow-text");
-} else {
-    document.body.classList.remove("green-text", "red-text", "golden-text", "rainbow-text");
-}
-    }
-    
-</script>
 
 <style>
     .light-mode {
@@ -229,21 +260,6 @@ if (textColor == "green") {
     
 </style>
 
-<script>
-    function changeTheme() {
-        var theme = document.getElementById("theme").value;
-        if (theme == "light") {
-            document.body.classList.remove("dark-mode");
-            document.body.classList.add("light-mode");
-        } else if (theme == "dark") {
-            document.body.classList.remove("light-mode");
-            document.body.classList.add("dark-mode");
-        } else {
-            document.body.classList.remove("light-mode", "dark-mode");
-        }
-    }
-</script>
-
 <div class="container mx-auto flex justify-between items-center px-4 py-8">
     <h1 class="text-4xl font-bold uppercase">John Dewey</h1>
 
@@ -306,6 +322,27 @@ if (textColor == "green") {
     }
 </style>
 
+<a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-20 right-4 w-12 h-12 md:w-24 md:h-24" alt="School Logo" style="filter: brightness(1);"></a>
+
+<div class="container mx-auto p-4">
+    <h2 class="text-3xl font-bold">Get in Touch</h2>
+    <form action="mailto:scallis@schools.nyc.gov, afilipov@schools.nyc.gov" method="post" enctype="text/plain">
+        <div class="flex flex-col space-y-4">
+            <label for="name" class="text-lg">Name:</label>
+            <input type="text" id="name" class="p-2 border border-gray-400 rounded" required>
+        </div>
+        <div class="flex flex-col space-y-4">
+            <label for="email" class="text-lg">Email:</label>
+            <input type="email" id="email" class="p-2 border border-gray-400 rounded" required>
+        </div>
+        <div class="flex flex-col space-y-4">
+            <label for="message" class="text-lg">Message:</label>
+            <textarea id="message" class="p-2 border border-gray-400 rounded" required></textarea>
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Send</button>
+    </form>
+</div>
+
 <div id="popup-container" class="fixed bottom-0 left-0 p-4 flex space-x-4 z-50 bg-gray-800 text-white rounded shadow-md animate-fade-in">
     <p class="text-sm">Welcome to the official John Dewey Mock Trial Team Website! Would you like to enable Mock Mode?</p>
     <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="enableMockMode(); document.getElementById('popup-container').classList.add('hidden')">Yes</button>
@@ -325,73 +362,6 @@ if (textColor == "green") {
     }
 </script>
 
-<div id="under-construction" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50 md:py-12 py-6">
-    <p class="text-lg md:text-2xl font-bold">This page is still under construction.</p>
-    <p class="text-sm md:text-md">We apologize for the inconvenience.</p>
-    <div class="flex flex-row space-x-2 md:space-x-4 mt-4 md:mt-8">
-        <a href="index.html" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded">Back to Home</a>
-        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded" onclick="document.getElementById('under-construction').classList.add('hidden')">Preview Website</button>
-    </div>
-</div>
-
-<a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-0 left-0 w-12 h-12 md:w-24 md:h-24 z-50" alt="School Logo" style="filter: brightness(1);"></a>
-
-<style>
-    .animate-fade-in {
-        animation: fade-in 2s;
-    }
-
-    .animate-bounce {
-        animation: bounce 2s;
-    }
-
-    .animate-slide-in {
-        animation: slide-in 2s;
-    }
-
-    .animate-scale-up {
-        animation: scale-up 2s;
-    }
-
-    @keyframes fade-in {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes bounce {
-        0% {
-            transform: scale(0.5);
-        }
-        50% {
-            transform: scale(1.2);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-
-    @keyframes slide-in {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes scale-up {
-        0% {
-            transform: scale(0.5);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-</style>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white text-center py-4"> 

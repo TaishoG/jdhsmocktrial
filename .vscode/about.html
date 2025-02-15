@@ -71,6 +71,59 @@
     </select>
 </div>
 
+<script>
+    function loadUserPreferences() {
+        const textColor = localStorage.getItem('textColor');
+        const theme = localStorage.getItem('theme');
+
+        if (textColor) {
+            document.getElementById('text-color').value = textColor;
+            changeTextColor();
+        }
+
+        if (theme) {
+            document.getElementById('theme').value = theme;
+            changeTheme();
+        }
+    }
+
+    loadUserPreferences();
+
+    function changeTextColor() {
+        var textColor = document.getElementById("text-color").value;
+        localStorage.setItem('textColor', textColor);
+        if (textColor == "green") {
+            document.body.classList.remove("red-text", "golden-text", "rainbow-text");
+            document.body.classList.add("green-text");
+        } else if (textColor == "red") {
+            document.body.classList.remove("green-text", "golden-text", "rainbow-text");
+            document.body.classList.add("red-text");
+        } else if (textColor == "golden") {
+            document.body.classList.remove("green-text", "red-text", "rainbow-text");
+            document.body.classList.add("golden-text");
+        } else if (textColor == "rainbow") {
+            document.body.classList.remove("green-text", "red-text", "golden-text");
+            document.body.classList.add("rainbow-text");
+        } else {
+            document.body.classList.remove("green-text", "red-text", "golden-text", "rainbow-text");
+        }
+    }
+
+    function changeTheme() {
+        var theme = document.getElementById("theme").value;
+        localStorage.setItem('theme', theme);
+        if (theme == "light") {
+            document.body.classList.remove("dark-mode");
+            document.body.classList.add("light-mode");
+        } else if (theme == "dark") {
+            document.body.classList.remove("light-mode");
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("light-mode", "dark-mode");
+        }
+    }
+</script>
+
 <style>
     .green-text {
         color: #34C759;
@@ -136,27 +189,6 @@
     }
 </style>
 
-<script>
-    function changeTextColor() {
-var textColor = document.getElementById("text-color").value;
-if (textColor == "green") {
-    document.body.classList.remove("red-text", "golden-text", "rainbow-text");
-    document.body.classList.add("green-text");
-} else if (textColor == "red") {
-    document.body.classList.remove("green-text", "golden-text", "rainbow-text");
-    document.body.classList.add("red-text");
-} else if (textColor == "golden") {
-    document.body.classList.remove("green-text", "red-text", "rainbow-text");
-    document.body.classList.add("golden-text");
-} else if (textColor == "rainbow") {
-    document.body.classList.remove("green-text", "red-text", "golden-text");
-    document.body.classList.add("rainbow-text");
-} else {
-    document.body.classList.remove("green-text", "red-text", "golden-text", "rainbow-text");
-}
-    }
-    
-</script>
 
 <style>
     .light-mode {
@@ -228,21 +260,6 @@ if (textColor == "green") {
     }
     
 </style>
-
-<script>
-    function changeTheme() {
-        var theme = document.getElementById("theme").value;
-        if (theme == "light") {
-            document.body.classList.remove("dark-mode");
-            document.body.classList.add("light-mode");
-        } else if (theme == "dark") {
-            document.body.classList.remove("light-mode");
-            document.body.classList.add("dark-mode");
-        } else {
-            document.body.classList.remove("light-mode", "dark-mode");
-        }
-    }
-</script>
 
 <div class="container mx-auto flex justify-between items-center px-4 py-8">
     <h1 class="text-4xl font-bold uppercase">John Dewey</h1>
@@ -325,75 +342,6 @@ if (textColor == "green") {
     }
 </script>
 
-<div id="login-container" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50">
-    <h1 class="text-4xl font-bold">Staff Login</h1>
-    <form id="login-form" class="mt-8">
-        <input type="text" id="username" placeholder="Username" class="bg-gray-700 text-white py-2 px-4 rounded mb-4">
-        <input type="password" id="password" placeholder="Password" class="bg-gray-700 text-white py-2 px-4 rounded mb-4">
-        <button id="login-btn" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Login</button>
-    </form>
-</div>
-<script>
-if (localStorage.getItem('loggedIn')) {
-    document.getElementById('login-container').classList.add('hidden');
-}
-
-const loginForm = document.getElementById('login-form');
-const loginContainer = document.getElementById('login-container');
-
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    if (username === 'admin' && password === 'password') {
-        loginContainer.classList.add('hidden');
-        localStorage.setItem('loggedIn', true);
-    } else {
-        alert('Invalid username or password');
-    }
-});
-</script>
-
-<div id="local-storage-data" class="fixed bottom-0 right-0 p-4 flex space-x-4 z-50 bg-gray-800 text-white rounded shadow-md animate-fade-in">
-    <h2 id="local-storage-header">Saved Local Storage Data:</h2>
-    <ul id="local-storage-list"></ul>
-    <button id="clear-local-storage" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="clearLocalStorage()">Clear Local Storage</button>
-</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const localStorageList = document.getElementById('local-storage-list');
-        const localStorageHeader = document.getElementById('local-storage-header');
-        const clearLocalStorageBtn = document.getElementById('clear-local-storage');
-
-        for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            const value = localStorage.getItem(key);
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<strong>${key}:</strong> ${value} <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="removeItemFromLocalStorage('${key}')">Remove</button>`;
-            localStorageList.appendChild(listItem);
-        }
-    });
-
-    function removeItemFromLocalStorage(key) {
-        localStorage.removeItem(key);
-        document.getElementById('local-storage-list').innerHTML = '';
-        for (let i = 0; i < localStorage.length; i++) {
-            const newKey = localStorage.key(i);
-            const value = localStorage.getItem(newKey);
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<strong>${newKey}:</strong> ${value} <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="removeItemFromLocalStorage('${newKey}')">Remove</button>`;
-            document.getElementById('local-storage-list').appendChild(listItem);
-        }
-    }
-
-    function clearLocalStorage() {
-        localStorage.clear();
-        document.getElementById('local-storage-list').innerHTML = '';
-    }
-</script>
-
 <div id="under-construction" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50 md:py-12 py-6">
     <p class="text-lg md:text-2xl font-bold">This page is still under construction.</p>
     <p class="text-sm md:text-md">We apologize for the inconvenience.</p>
@@ -410,6 +358,35 @@ loginForm.addEventListener('submit', (e) => {
 </script>
 
 <a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-0 left-0 w-12 h-12 md:w-24 md:h-24 z-50" alt="School Logo" style="filter: brightness(1);"></a>
+
+<div class="container mx-auto p-4 animate-fade-in">
+    <h1 class="text-5xl font-bold uppercase text-center animate-bounce">About Us</h1>
+    <p class="text-lg text-center animate-fade-in">The John Dewey Mock Trial Team is a group of dedicated students who share a passion for law and justice. Our team is committed to developing our skills in critical thinking, public speaking, and teamwork, as we prepare for competitions and community events.</p>
+    <h2 class="text-3xl font-bold text-center animate-slide-in">Our Team</h2>
+    <div class="flex flex-wrap justify-center animate-fade-in">
+        <div class="w-full md:w-1/2 xl:w-1/3 p-4 bg-gray-100 rounded shadow-md animate-scale-up">
+            <h3 class="text-2xl font-bold text-center">Coaches</h3>
+            <ul class="list-none">
+                <li class="animate-fade-in">Coach 1</li>
+                <li class="animate-fade-in">Coach 2</li>
+            </ul>
+        </div>
+        <div class="w-full md:w-1/2 xl:w-1/3 p-4 bg-gray-100 rounded shadow-md animate-scale-up">
+            <h3 class="text-2xl font-bold text-center">Team Members</h3>
+            <ul class="list-none">
+                <li class="animate-fade-in">Member 1</li>
+                <li class="animate-fade-in">Member 2</li>
+                <li class="animate-fade-in">Member 3</li>
+            </ul>
+        </div>
+    </div>
+    <h2 class="text-3xl font-bold text-center animate-slide-in">Our Achievements</h2>
+    <ul class="list-none text-center animate-fade-in">
+        <li class="animate-fade-in">Award 1</li>
+        <li class="animate-fade-in">Award 2</li>
+        <li class="animate-fade-in">Award 3</li>
+    </ul>
+</div>
 
 <style>
     .animate-fade-in {
@@ -467,6 +444,7 @@ loginForm.addEventListener('submit', (e) => {
         }
     }
 </style>
+
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white text-center py-4"> 

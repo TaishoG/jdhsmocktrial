@@ -71,6 +71,59 @@
     </select>
 </div>
 
+<script>
+    function loadUserPreferences() {
+        const textColor = localStorage.getItem('textColor');
+        const theme = localStorage.getItem('theme');
+
+        if (textColor) {
+            document.getElementById('text-color').value = textColor;
+            changeTextColor();
+        }
+
+        if (theme) {
+            document.getElementById('theme').value = theme;
+            changeTheme();
+        }
+    }
+
+    loadUserPreferences();
+
+    function changeTextColor() {
+        var textColor = document.getElementById("text-color").value;
+        localStorage.setItem('textColor', textColor);
+        if (textColor == "green") {
+            document.body.classList.remove("red-text", "golden-text", "rainbow-text");
+            document.body.classList.add("green-text");
+        } else if (textColor == "red") {
+            document.body.classList.remove("green-text", "golden-text", "rainbow-text");
+            document.body.classList.add("red-text");
+        } else if (textColor == "golden") {
+            document.body.classList.remove("green-text", "red-text", "rainbow-text");
+            document.body.classList.add("golden-text");
+        } else if (textColor == "rainbow") {
+            document.body.classList.remove("green-text", "red-text", "golden-text");
+            document.body.classList.add("rainbow-text");
+        } else {
+            document.body.classList.remove("green-text", "red-text", "golden-text", "rainbow-text");
+        }
+    }
+
+    function changeTheme() {
+        var theme = document.getElementById("theme").value;
+        localStorage.setItem('theme', theme);
+        if (theme == "light") {
+            document.body.classList.remove("dark-mode");
+            document.body.classList.add("light-mode");
+        } else if (theme == "dark") {
+            document.body.classList.remove("light-mode");
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("light-mode", "dark-mode");
+        }
+    }
+</script>
+
 <style>
     .green-text {
         color: #34C759;
@@ -135,28 +188,6 @@
         }
     }
 </style>
-
-<script>
-    function changeTextColor() {
-var textColor = document.getElementById("text-color").value;
-if (textColor == "green") {
-    document.body.classList.remove("red-text", "golden-text", "rainbow-text");
-    document.body.classList.add("green-text");
-} else if (textColor == "red") {
-    document.body.classList.remove("green-text", "golden-text", "rainbow-text");
-    document.body.classList.add("red-text");
-} else if (textColor == "golden") {
-    document.body.classList.remove("green-text", "red-text", "rainbow-text");
-    document.body.classList.add("golden-text");
-} else if (textColor == "rainbow") {
-    document.body.classList.remove("green-text", "red-text", "golden-text");
-    document.body.classList.add("rainbow-text");
-} else {
-    document.body.classList.remove("green-text", "red-text", "golden-text", "rainbow-text");
-}
-    }
-    
-</script>
 
 <style>
     .light-mode {
@@ -228,21 +259,6 @@ if (textColor == "green") {
     }
     
 </style>
-
-<script>
-    function changeTheme() {
-        var theme = document.getElementById("theme").value;
-        if (theme == "light") {
-            document.body.classList.remove("dark-mode");
-            document.body.classList.add("light-mode");
-        } else if (theme == "dark") {
-            document.body.classList.remove("light-mode");
-            document.body.classList.add("dark-mode");
-        } else {
-            document.body.classList.remove("light-mode", "dark-mode");
-        }
-    }
-</script>
 
 <div class="container mx-auto flex justify-between items-center px-4 py-8">
     <h1 class="text-4xl font-bold uppercase">John Dewey</h1>
@@ -330,10 +346,15 @@ if (textColor == "green") {
     <p class="text-sm md:text-md">We apologize for the inconvenience.</p>
     <div class="flex flex-row space-x-2 md:space-x-4 mt-4 md:mt-8">
         <a href="index.html" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded">Back to Home</a>
-        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded" onclick="document.getElementById('under-construction').classList.add('hidden')">Preview Website</button>
+        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded" onclick="localStorage.setItem('previewed', true); document.getElementById('under-construction').classList.add('hidden')">Preview Website</button>
     </div>
 </div>
 
+<script>
+    if (localStorage.getItem('previewed')) {
+        document.getElementById('under-construction').classList.add('hidden');
+    }
+</script>
 <a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-0 left-0 w-12 h-12 md:w-24 md:h-24 z-50" alt="School Logo" style="filter: brightness(1);"></a>
 
 <style>
