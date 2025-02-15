@@ -7,7 +7,6 @@
     <title>Mock Trial</title>
 </head>
 
-
 <style>
     @media only screen and (max-width: 768px) {
     html, body {
@@ -335,20 +334,64 @@ if (textColor == "green") {
     </form>
 </div>
 <script>
-    const loginForm = document.getElementById('login-form');
-    const loginContainer = document.getElementById('login-container');
+if (localStorage.getItem('loggedIn')) {
+    document.getElementById('login-container').classList.add('hidden');
+}
 
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+const loginForm = document.getElementById('login-form');
+const loginContainer = document.getElementById('login-container');
 
-        if (username === 'admin' && password === 'password') {
-            loginContainer.classList.add('hidden');
-        } else {
-            alert('Invalid username or password');
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'admin' && password === 'password') {
+        loginContainer.classList.add('hidden');
+        localStorage.setItem('loggedIn', true);
+    } else {
+        alert('Invalid username or password');
+    }
+});
+</script>
+
+<div id="local-storage-data" class="fixed bottom-0 right-0 p-4 flex space-x-4 z-50 bg-gray-800 text-white rounded shadow-md animate-fade-in">
+    <h2 id="local-storage-header">Saved Local Storage Data:</h2>
+    <ul id="local-storage-list"></ul>
+    <button id="clear-local-storage" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="clearLocalStorage()">Clear Local Storage</button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const localStorageList = document.getElementById('local-storage-list');
+        const localStorageHeader = document.getElementById('local-storage-header');
+        const clearLocalStorageBtn = document.getElementById('clear-local-storage');
+
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<strong>${key}:</strong> ${value} <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="removeItemFromLocalStorage('${key}')">Remove</button>`;
+            localStorageList.appendChild(listItem);
         }
     });
+
+    function removeItemFromLocalStorage(key) {
+        localStorage.removeItem(key);
+        document.getElementById('local-storage-list').innerHTML = '';
+        for (let i = 0; i < localStorage.length; i++) {
+            const newKey = localStorage.key(i);
+            const value = localStorage.getItem(newKey);
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<strong>${newKey}:</strong> ${value} <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded" onclick="removeItemFromLocalStorage('${newKey}')">Remove</button>`;
+            document.getElementById('local-storage-list').appendChild(listItem);
+        }
+    }
+
+    function clearLocalStorage() {
+        localStorage.clear();
+        document.getElementById('local-storage-list').innerHTML = '';
+    }
 </script>
 
 <div id="under-construction" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50 md:py-12 py-6">
@@ -356,9 +399,15 @@ if (textColor == "green") {
     <p class="text-sm md:text-md">We apologize for the inconvenience.</p>
     <div class="flex flex-row space-x-2 md:space-x-4 mt-4 md:mt-8">
         <a href="index.html" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded">Back to Home</a>
-        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded" onclick="document.getElementById('under-construction').classList.add('hidden')">Preview Website</button>
+        <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 md:py-2 px-2 md:px-4 rounded" onclick="localStorage.setItem('previewed', true); document.getElementById('under-construction').classList.add('hidden')">Preview Website</button>
     </div>
 </div>
+
+<script>
+    if (localStorage.getItem('previewed')) {
+        document.getElementById('under-construction').classList.add('hidden');
+    }
+</script>
 
 <a href="https://johndeweyhighschool.org" target="_blank"><img src="school-logo.png" class="fixed top-0 left-0 w-12 h-12 md:w-24 md:h-24 z-50" alt="School Logo" style="filter: brightness(1);"></a>
 
