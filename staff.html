@@ -340,36 +340,6 @@
     }
 </script>
 
-<div id="login-container" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50">
-    <h1 class="text-4xl font-bold">Staff Login</h1>
-    <form id="login-form" class="mt-8">
-        <input type="text" id="username" placeholder="Username" class="bg-gray-700 text-white py-2 px-4 rounded mb-4">
-        <input type="password" id="password" placeholder="Password" class="bg-gray-700 text-white py-2 px-4 rounded mb-4">
-        <button id="login-btn" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Login</button>
-    </form>
-</div>
-<script>
-if (localStorage.getItem('loggedIn')) {
-    document.getElementById('login-container').classList.add('hidden');
-}
-
-const loginForm = document.getElementById('login-form');
-const loginContainer = document.getElementById('login-container');
-
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    if (username === 'admin' && password === 'password') {
-        loginContainer.classList.add('hidden');
-        localStorage.setItem('loggedIn', true);
-    } else {
-        alert('Invalid username or password');
-    }
-});
-</script>
-
 <div id="local-storage-data" class="fixed top-1/2 left-0 p-4 flex space-x-4 z-50 bg-gray-800 text-white rounded shadow-md animate-fade-in -translate-y-1/2"> 
     <h2 id="local-storage-header">Saved Local Storage Data:</h2>
     <ul id="local-storage-list"></ul>
@@ -407,6 +377,36 @@ loginForm.addEventListener('submit', (e) => {
         localStorage.clear();
         document.getElementById('local-storage-list').innerHTML = '';
     }
+</script>
+
+<div id="login-container" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50">
+    <h1 class="text-4xl font-bold">Staff Login</h1>
+    <form id="login-form" class="mt-8">
+        <input type="text" id="username" placeholder="Username" class="bg-gray-700 text-white py-2 px-4 rounded mb-4">
+        <input type="password" id="password" placeholder="Password" class="bg-gray-700 text-white py-2 px-4 rounded mb-4">
+        <button id="login-btn" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Login</button>
+    </form>
+</div>
+<script>
+if (localStorage.getItem('loggedIn')) {
+    document.getElementById('login-container').classList.add('hidden');
+}
+
+const loginForm = document.getElementById('login-form');
+const loginContainer = document.getElementById('login-container');
+
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'admin' && password === 'password') {
+        loginContainer.classList.add('hidden');
+        localStorage.setItem('loggedIn', true);
+    } else {
+        alert('Invalid username or password');
+    }
+});
 </script>
 
 <div id="under-construction" class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center z-50 md:py-12 py-6">
